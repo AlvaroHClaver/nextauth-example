@@ -53,15 +53,11 @@ const nextAuthOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV === "development",
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.user = user;
-      }
+      user && (token.user = user);
       return token;
     },
     async session({ session, token }) {
-      if (token.user) {
-        session.user = token.user;
-      }
+      session = token.user as any;
       return session;
     },
   },

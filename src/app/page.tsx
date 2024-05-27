@@ -9,7 +9,6 @@ export default function Home() {
   const router = useRouter();
   async function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
-    console.log({ username, password });
     const result = await signIn("credentials", {
       username,
       password,
@@ -21,7 +20,7 @@ export default function Home() {
       return;
     }
 
-    router.replace("/");
+    router.replace("/private");
   }
 
   return (
